@@ -3,7 +3,7 @@ var app = express();
 
 var things = require('./things.js');
 
-app.get('/:id/:name', (req, res) => {
+app.get('/:id([0-9]{5})/:name', (req, res) => {
     res.send('id: ' + req.params.id + ' and name: ' + req.params.name);
 });
 
