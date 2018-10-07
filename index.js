@@ -63,4 +63,10 @@ app.post('/person', (req, res) => {
     }
 })
 
+app.get('/person/all', (req, res) => {
+    Person.find(function(err, response){
+        res.json(response);
+    });
+});
+
 app.listen(3000);
