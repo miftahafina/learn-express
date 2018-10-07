@@ -1,7 +1,10 @@
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
 
 var things = require('./things.js');
+
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/things', (req, res, next) => {
     console.log('A new request for things received at ' + Date.now());
