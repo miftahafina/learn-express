@@ -18,7 +18,7 @@ app.get('/template', (req, res) => {
     res.render('content');
 });
 
-app.use(express.static('public'));
+app.use('/pictures', express.static('public'));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
