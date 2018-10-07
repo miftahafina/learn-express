@@ -34,7 +34,33 @@ app.get('/person', (req, res) => {
 });
 
 app.post('/person', (req, res) => {
-    res.send(req.body);
+    var personInfo = req.body;
+
+    if (!personInfo.name || !personInfo.age || !personInfo.nationality) {
+        res.render('show_message', {
+            message: "Sorry, you provided wrong info", type: "error"
+        });
+
+    } else {
+        var newPerson = new Person({
+            name: personInfo.name,
+            age: personInfo.age,
+            nationality: personInfo.nationality
+        });
+
+        newPerson.save((err, Person) => {
+            if (err) {
+                res.render('show_message', { message: "Database error", type: "error"});
+
+            } else {
+                res.render('show_message', {
+                    message: "New Person added",
+                    type: "Success",
+                    person: personInfo
+                });
+            }
+        });
+    }
 })
 
 app.listen(3000);

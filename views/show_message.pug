@@ -1,0 +1,13 @@
+html
+    head
+        title Person
+    body
+        if (type == "error")
+            h3(style = "color: red") #{message}
+        else
+            h3 New Person added.
+            p Name: #{person.name}
+                br
+                | Age: #{person.age}
+                br
+                | Nationality: #{person.nationality}
