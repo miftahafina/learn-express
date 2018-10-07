@@ -18,6 +18,8 @@ app.get('/template', (req, res) => {
     res.render('content');
 });
 
+app.use(express.static('public'));
+
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/things', (req, res, next) => {
