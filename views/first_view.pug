@@ -1,0 +1,20 @@
+doctype html
+html
+    head
+        title="Hello Pug"
+    body
+        p.greetings#people Hello World!
+        hr
+
+        if (name == 'Miftah Afina')
+            p You are Administrator
+        else
+            p Who Are You
+
+        
+        hr
+        div
+            p.
+                this is p inside div tag
+            p.
+                My name is is #{name}, and my twitter is #{twitter}

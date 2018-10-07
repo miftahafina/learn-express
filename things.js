@@ -13,5 +13,9 @@ router.get('/fin', (req, res) => {
     res.send('GET fin route on things.');
 });
 
+router.get('/hai', (req, res) => {
+    res.send('GET hai route on things.');
+});
+
 // export to use in index.js
 module.exports = router;

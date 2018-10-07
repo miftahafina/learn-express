@@ -4,6 +4,16 @@ var bodyParser = require('body-parser');
 
 var things = require('./things.js');
 
+app.set('view engine', 'pug');
+app.set('views', './views');
+
+app.get('/first/:name', (req, res) => {
+    res.render('first_view', {
+        name: req.params.name,
+        twitter: '@MiftahAfina'
+    });
+});
+
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/things', (req, res, next) => {
