@@ -9,5 +9,9 @@ router.post('/', (req, res) => {
     res.send('POST route on things.');
 });
 
+router.get('/fin', (req, res) => {
+    res.send('GET fin route on things.');
+});
+
 // export to use in index.js
 module.exports = router;
