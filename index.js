@@ -14,6 +14,10 @@ app.get('/first/:name', (req, res) => {
     });
 });
 
+app.get('/template', (req, res) => {
+    res.render('content');
+});
+
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/things', (req, res, next) => {
