@@ -69,4 +69,17 @@ app.get('/person/all', (req, res) => {
     });
 });
 
+app.get('/person/:name/:nationality', (req, res) => {
+    Person.update({name: req.params.name}, {nationality: req.params.nationality}, (err, response) => {
+        res.json(response);
+    });
+});
+
+app.get('/person/:id', (req, res) => {
+    // res.send(req.params.id);
+    Person.findById(req.params.id, (err, response) => {
+        res.json(response);
+    });
+});
+
 app.listen(3000);
