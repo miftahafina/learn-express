@@ -3,6 +3,15 @@ var app = express();
 
 var things = require('./things.js');
 
+app.use('/things', (req, res, next) => {
+    console.log('A new request for things received at ' + Date.now());
+    next();
+});
+
+// app.use('/things', (req, res, next) => {
+//     console.log('A request for things received at ' + Date.now());
+// });
+
 app.get('/things/:id([0-9]{5})/:name', (req, res) => {
     res.send('id: ' + req.params.id + ' and name: ' + req.params.name);
 });
