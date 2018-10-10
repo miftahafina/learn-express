@@ -3,6 +3,7 @@ var bodyParser   = require('body-parser');
 var multer       = require('multer');
 var mongoose     = require('mongoose');
 var cookieParser = require('cookie-parser');
+var session      = require('express-session');
 var upload       = multer();
 var app          = express();
 
@@ -22,7 +23,9 @@ app.use(upload.array());
 // static dir
 app.use(express.static('public'));
 // for parsing cookie (req.cookies)
-app.use(cookieParser())
+app.use(cookieParser());
+// set session
+app.use(session({secret: "Shh, its a secret!"}));
 
 // Model
 var personSchema = mongoose.Schema({
@@ -104,6 +107,15 @@ app.get('/clear-kuki', (req, res) => {
        .send('cookie \'name\' cleared');
 });
 
-
+app.get('/cek-sesi', (req, res) => {
+    if(req.session.page_views){
+        req.session.page_views++;
+        res.send(req.session.page_views + " x");
+    
+    } else {
+        req.session.page_views = 1;
+        res.send('first');
+    }
+});
 
 app.listen(3000);
