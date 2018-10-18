@@ -17,7 +17,12 @@ app.use(upload.array());
 var movies = require('./movies.js');
 
 // Use router
+app.get('/', (req, res) => {
+   res.redirect('/movies');
+});
+
 app.use('/movies', movies);
+
 
 app.listen(port, () => {
     console.log('Our app is running on http://localhost:' + port);
