@@ -6,6 +6,8 @@ var cookieParser = require('cookie-parser');
 var app    = express();
 var upload = multer();
 
+var port = process.env.PORT || 8080;
+
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -17,4 +19,6 @@ var movies = require('./movies.js');
 // Use router
 app.use('/movies', movies);
 
-app.listen(2000);
+app.listen(port, () => {
+    console.log('Our app is running on http://localhost:' + port);
+});
